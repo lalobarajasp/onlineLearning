@@ -1,81 +1,110 @@
 package com.example.onlineLearning.user.model;
 
-import com.example.onlineLearning.user.contract.Builder;
-
-public class UserBuilder implements Builder, com.example.onlineLearning.user.contract.User {
-    private String name;
-    private String lastName;
-    private String address;
-    private String city;
-    private String country;
-    private int zipCode;
-    private int phone;
-    private String email;
-
+public class UserBuilder implements com.example.onlineLearning.user.contract.UserBuilder {
+    private Long id; //required
+    private String name; //required
+    private String lastName; //required
+    private String email; //required
+    private int phone; //required
+    private String address; //optional
+    private String city; //optional
+    private String country; //optional
+    private int zipCode; //optional
 
     @Override
-    public void setName(String name) {
+    public UserBuilder id(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    @Override
+    public UserBuilder name(String name) {
         this.name = name;
+        return this;
     }
 
     @Override
-    public void setLastName(String lastName) {
+    public UserBuilder lastName(String lastName) {
         this.lastName = lastName;
+        return this;
     }
 
     @Override
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    @Override
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    @Override
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    @Override
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    @Override
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
-    @Override
-    public void setEmail(String email) {
+    public UserBuilder email(String email) {
         this.email = email;
+        return this;
+    }
+
+    @Override
+    public UserBuilder phone(int phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    @Override
+    public UserBuilder address(String address) {
+        this.address = address;
+        return this;
+    }
+
+    @Override
+    public UserBuilder city(String city) {
+        this.city = city;
+        return this;
+    }
+
+    @Override
+    public UserBuilder country(String country) {
+        this.country = country;
+        return this;
+    }
+
+    @Override
+    public UserBuilder zipCode(int zipCode) {
+        this.zipCode = zipCode;
+        return this;
     }
 
     public User build(){
-        return new User(name,lastName,address,city,country,zipCode,phone,email);
+        return new User(this);
     }
 
-    @Override
-    public void signUp() {
-
+    public Long getId() {
+        return id;
     }
 
-    @Override
-    public void logIn() {
-
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public void editProfile() {
-
+    public String getLastName() {
+        return lastName;
     }
 
-    @Override
-    public void forgotPassword() {
-
+    public String getEmail() {
+        return email;
     }
+
+    public int getPhone() {
+        return phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public int getZipCode() {
+        return zipCode;
+    }
+
 
 
 }
