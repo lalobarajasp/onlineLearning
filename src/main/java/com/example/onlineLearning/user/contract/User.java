@@ -1,8 +1,9 @@
 package com.example.onlineLearning.user.contract;
 
 public interface User {
-    void signUp();
-    void logIn();
-    void editProfile();
-    void forgotPassword();
+    public void signUp();
+    public void logIn();
+    public void editProfile();
+    public void forgotPassword();
+
 }
