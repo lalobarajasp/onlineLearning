@@ -5,14 +5,14 @@ public class User {
     private String name; //required
     private String lastName; //required
     private String email; //required
-    private int phone; //required
+    private Long phone; //required
     private String address; //optional
     private String city; //optional
     private String country; //optional
     private int zipCode; //optional
 
     public User(UserBuilder userBuilder){
-        this.id = userBuilder.getId();
+       this.id = userBuilder.getId();
         this.name = userBuilder.getName();
         this.lastName = userBuilder.getLastName();
         this.email = userBuilder.getEmail();
@@ -27,6 +27,7 @@ public class User {
         return id;
     }
 
+
     public String getName() {
         return name;
     }
@@ -39,7 +40,7 @@ public class User {
         return email;
     }
 
-    public int getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
@@ -57,6 +58,42 @@ public class User {
 
     public int getZipCode() {
         return zipCode;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setZipCode(int zipCode) {
+        this.zipCode = zipCode;
     }
 
     @Override

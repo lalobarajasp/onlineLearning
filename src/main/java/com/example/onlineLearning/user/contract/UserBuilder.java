@@ -8,7 +8,7 @@ public interface UserBuilder {
     UserBuilder lastName(String lastName);
 
     UserBuilder email(String email);
-    UserBuilder phone(int phone);
+    UserBuilder phone(Long phone);
     UserBuilder address(String address);
     UserBuilder city(String city);
     UserBuilder country(String country);

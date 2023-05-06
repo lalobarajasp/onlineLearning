@@ -1,11 +1,17 @@
 package com.example.onlineLearning.user.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class UserBuilder implements com.example.onlineLearning.user.contract.UserBuilder {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; //required
     private String name; //required
     private String lastName; //required
     private String email; //required
-    private int phone; //required
+    private Long phone; //required
     private String address; //optional
     private String city; //optional
     private String country; //optional
@@ -36,7 +42,7 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
     }
 
     @Override
-    public UserBuilder phone(int phone) {
+    public UserBuilder phone(Long phone) {
         this.phone = phone;
         return this;
     }
@@ -66,6 +72,7 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
     }
 
     public User build(){
+
         return new User(this);
     }
 
@@ -85,7 +92,7 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
         return email;
     }
 
-    public int getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
@@ -106,5 +113,39 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
     }
 
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setZipCode(int zipCode) {
+        this.zipCode = zipCode;
+    }
 }
