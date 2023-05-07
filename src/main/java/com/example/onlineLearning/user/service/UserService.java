@@ -27,29 +27,52 @@ public class UserService {
         );
     }
 
-//    // update usuario
-//    public UserBuilder updateUser(Long id, String name, String lastName, String email, Long phone, String address, String city, String country, int zipCode) {
-//        UserBuilder tmpUser = null;
-//        if (userRepository.existsById(id)) {
-//            tmpUser = userRepository.findById(id).get();
-//            if (name != null) tmpUser.setName(name);
-//            if (lastName != null) tmpUser.setLastName(lastName);
-//            if (phone != null) tmpUser.setPhone(phone);
-//            //--------------------
-//            if ((contrasena !=null) & (newContrasena!=null)) {
-//                if(contrasena.equals(tmpUser.getContrasena())) { //si el password es correcto
-//                    tmpUser.setContrasena(newContrasena);
-//                    usuariosRepository.save(tmpUser);
-//                }// if password.equals
-//            }//if !=null
-//            //----------------------
-//
-//            usuariosRepository.save(tmpUser);
-//        } else {
-//            System.out.println("Update | El usuario con el id " + " no existe");
-//        }
-//        return tmpUser;
-//    }//updateUsuario
+    // update usuario
+    public UserBuilder updateUser(Long id, String name, String lastName, String email, String password, String newPassword, Long phone, String address) {
+        UserBuilder tmpUser = null;
+        if (userRepository.existsById(id)) {
+            tmpUser = userRepository.findById(id).get();
+            if (name != null) tmpUser.setName(name);
+            if (lastName != null) tmpUser.setLastName(lastName);
+            if (email != null) tmpUser.setEmail(email);
+            if (phone != null) tmpUser.setPhone(phone);
+            if (address != null) tmpUser.setAddress(address);
+            //--------------------
+            if ((password !=null) & (newPassword!=null)) {
+                if(password.equals(tmpUser.getPassword())) { //si el password es correcto
+                    tmpUser.setPassword(newPassword);
+                    userRepository.save(tmpUser);
+                }// if password.equals
+            }//if !=null
+            //----------------------
+            userRepository.save(tmpUser);
+        } else {
+            System.out.println("Update | The user with the id: " + id + " doesn't exist.");
+        }
+        return tmpUser;
+    }//updateUsuario
+
+    public UserBuilder forgotPassword(Long id, String name, String lastName, String email, String password, String newPassword, Long passwordCode) {
+        UserBuilder tmpUser = null;
+        if (userRepository.existsById(id)) {
+            tmpUser = userRepository.findById(id).get();
+            if (name != null) tmpUser.setName(name);
+            if (lastName != null) tmpUser.setLastName(lastName);
+            if (email != null) tmpUser.setEmail(email);
+            //--------------------
+            if ((password !=null) & (newPassword!=null)) {
+                if(passwordCode.equals(tmpUser.getPasswordCode())) { //si el password es correcto
+                    tmpUser.setPassword(newPassword);
+                    userRepository.save(tmpUser);
+                }// if password.equals
+            }//if !=null
+            //----------------------
+            userRepository.save(tmpUser);
+        } else {
+            System.out.println("Update | The user with the id: " + id + " doesn't exist.");
+        }
+        return tmpUser;
+    }//updateUsuario
 
 
 

@@ -8,11 +8,10 @@ public interface UserBuilder {
     UserBuilder lastName(String lastName);
 
     UserBuilder email(String email);
+    UserBuilder password(String password);
     UserBuilder phone(Long phone);
     UserBuilder address(String address);
-    UserBuilder city(String city);
-    UserBuilder country(String country);
-    UserBuilder zipCode(int zipCode);
+    UserBuilder passwordCode(Long passwordCode);
 
 
     

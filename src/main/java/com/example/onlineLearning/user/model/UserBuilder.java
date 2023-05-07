@@ -11,11 +11,10 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
     private String name; //required
     private String lastName; //required
     private String email; //required
+    private String password; //required
     private Long phone; //required
     private String address; //optional
-    private String city; //optional
-    private String country; //optional
-    private int zipCode; //optional
+    private Long passwordCode; //optional
 
     @Override
     public UserBuilder id(Long id) {
@@ -42,6 +41,11 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
     }
 
     @Override
+    public UserBuilder password(String password) {
+        this.password = password;
+        return this;
+    }
+    @Override
     public UserBuilder phone(Long phone) {
         this.phone = phone;
         return this;
@@ -54,20 +58,8 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
     }
 
     @Override
-    public UserBuilder city(String city) {
-        this.city = city;
-        return this;
-    }
-
-    @Override
-    public UserBuilder country(String country) {
-        this.country = country;
-        return this;
-    }
-
-    @Override
-    public UserBuilder zipCode(int zipCode) {
-        this.zipCode = zipCode;
+    public UserBuilder passwordCode(Long passwordCode) {
+        this.passwordCode = passwordCode;
         return this;
     }
 
@@ -91,6 +83,9 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
     public String getEmail() {
         return email;
     }
+    public String getPassword() {
+        return password;
+    }
 
     public Long getPhone() {
         return phone;
@@ -100,16 +95,8 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
         return address;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public int getZipCode() {
-        return zipCode;
+    public Long getPasswordCode() {
+        return passwordCode;
     }
 
 
@@ -129,6 +116,10 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
         this.email = email;
     }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void setPhone(Long phone) {
         this.phone = phone;
     }
@@ -137,15 +128,8 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
         this.address = address;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
+    public void setPasswordCode(Long passwordCode) {
+        this.passwordCode = passwordCode;
     }
 }

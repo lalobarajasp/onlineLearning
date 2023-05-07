@@ -5,22 +5,20 @@ public class User {
     private String name; //required
     private String lastName; //required
     private String email; //required
+    private String password; //required
     private Long phone; //required
     private String address; //optional
-    private String city; //optional
-    private String country; //optional
-    private int zipCode; //optional
+    private Long passwordCode; //optional
 
     public User(UserBuilder userBuilder){
        this.id = userBuilder.getId();
         this.name = userBuilder.getName();
         this.lastName = userBuilder.getLastName();
         this.email = userBuilder.getEmail();
+        this.password = userBuilder.getPassword();
         this.phone = userBuilder.getPhone();
         this.address = userBuilder.getAddress();
-        this.city = userBuilder.getCity();
-        this.country = userBuilder.getCountry();
-        this.zipCode = userBuilder.getZipCode();
+        this.passwordCode = userBuilder.getPasswordCode();
     }
 
     public Long getId() {
@@ -39,6 +37,9 @@ public class User {
     public String getEmail() {
         return email;
     }
+    public String getPassword() {
+        return email;
+    }
 
     public Long getPhone() {
         return phone;
@@ -48,16 +49,8 @@ public class User {
         return address;
     }
 
-    public String getCity() {
-        return city;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public int getZipCode() {
-        return zipCode;
+    public Long getPasswordCode() {
+        return passwordCode;
     }
 
     public void setId(Long id) {
@@ -75,6 +68,9 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public void setPhone(Long phone) {
         this.phone = phone;
@@ -84,16 +80,8 @@ public class User {
         this.address = address;
     }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
+    public void setPasswordCode(Long passwordCode) {
+        this.passwordCode = passwordCode;
     }
 
     @Override
@@ -103,11 +91,10 @@ public class User {
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 ", phone=" + phone +
                 ", address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", zipCode=" + zipCode +
+                ", passwordCode=" + passwordCode +
                 '}';
     }
 }

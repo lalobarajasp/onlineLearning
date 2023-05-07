@@ -1,5 +1,6 @@
 package com.example.onlineLearning.user.controller;
 
+import com.example.onlineLearning.user.model.ChangePassword;
 import com.example.onlineLearning.user.model.User;
 import com.example.onlineLearning.user.model.UserBuilder;
 import com.example.onlineLearning.user.service.UserService;
@@ -37,17 +38,19 @@ public class UserController {
         return userService.getOnlyUser(id);
     }
 
-//    //Metodo put para un usuario
-//    @PutMapping(path="{userId}")
-//    public Usuarios updateUsuarios(@PathVariable("userId") Long id,
-//                                   @RequestParam(required = false) String nombre,
-//                                   @RequestParam(required = false) String apellido,
-//                                   @RequestParam(required = false) String telefono,
-//                                   //---Se añadio linea RequestBody
-//                                   @RequestBody ChangePassword changePassword) {
-//        return usuariosService.updateUsuarios(id, nombre, apellido, telefono, changePassword.getContrasena(),
-//                changePassword.getNewContrasena());
-//    }//updateUsuarios
+    //Metodo put para un usuario
+    @PutMapping(path="user/{userId}")
+    public UserBuilder updateUser(@PathVariable("userId") Long id,
+                                   @RequestParam(required = false) String name,
+                                   @RequestParam(required = false) String lastName,
+                                   @RequestParam(required = false) String email,
+                                  @RequestParam(required = false) Long phone,
+                                  @RequestParam(required = false) String address,
+                                   //---Se añadio linea RequestBody
+                                   @RequestBody ChangePassword changePassword) {
+        return userService.updateUser(id, name, lastName, email, changePassword.getPassword(),
+                changePassword.getNewPassword(), phone, address);
+    }//updateUsuarios
 
     //Metodo delete para un usuario
     @DeleteMapping (path="user/{userId}")
