@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.net.URI;
 import java.util.List;
 
@@ -46,11 +45,26 @@ public class UserController {
                                    @RequestParam(required = false) String email,
                                   @RequestParam(required = false) Long phone,
                                   @RequestParam(required = false) String address,
-                                   //---Se añadio linea RequestBody
+
                                    @RequestBody ChangePassword changePassword) {
         return userService.updateUser(id, name, lastName, email, changePassword.getPassword(),
                 changePassword.getNewPassword(), phone, address);
     }//updateUsuarios
+
+
+//    @PutMapping(path="user/{userId}")
+//    public UserBuilder forgotPassword(@PathVariable("userId") Long id,
+//                                  @RequestParam(required = false) String name,
+//                                  @RequestParam(required = false) String lastName,
+//                                  @RequestParam(required = false) String email,
+//                                  @RequestParam(required = false) Long phone,
+//                                  @RequestParam(required = false) String address,
+//                                      @RequestParam(required = false) Long passwordCode,
+//                                  //---Se añadio linea RequestBody
+//                                  @RequestBody ChangePassword changePassword) {
+//        return userService.forgotPassword(id, name, lastName, email, changePassword.getPassword(),
+//                changePassword.getNewPassword(), phone, address, passwordCode);
+//    }//updateUsuarios
 
     //Metodo delete para un usuario
     @DeleteMapping (path="user/{userId}")

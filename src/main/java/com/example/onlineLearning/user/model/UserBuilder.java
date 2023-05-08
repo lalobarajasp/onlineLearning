@@ -128,7 +128,6 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
         this.address = address;
     }
 
-
     public void setPasswordCode(Long passwordCode) {
         this.passwordCode = passwordCode;
     }

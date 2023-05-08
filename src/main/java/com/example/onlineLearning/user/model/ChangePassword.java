@@ -1,24 +1,25 @@
 package com.example.onlineLearning.user.model;
 
 public class ChangePassword extends UserBuilder {
-    private String pasword;
+    private String password;
     private String newPassword;
 
-    public ChangePassword(String pasword, String newPassword) {
-        super();
-        this.pasword = pasword;
+    public ChangePassword(String password, String newPassword) {
+        this.password = password;
         this.newPassword = newPassword;
     }
 
     public ChangePassword() {
     }
 
-    public String getPasword() {
-        return pasword;
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasword(String pasword) {
-        this.pasword = pasword;
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getNewPassword() {
@@ -32,7 +33,7 @@ public class ChangePassword extends UserBuilder {
     @Override
     public String toString() {
         return "ChangePassword{" +
-                "pasword='" + pasword + '\'' +
+                "password='" + password + '\'' +
                 ", newPassword='" + newPassword + '\'' +
                 '}';
     }
