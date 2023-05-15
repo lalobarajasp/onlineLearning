@@ -12,11 +12,11 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
-    @PostMapping("create/user")
+    @PostMapping("/create")
     private ResponseEntity<UserBuilder> save(@RequestBody UserBuilder userBuilder){
         UserBuilder temporal = userService.create(userBuilder);
         try{
@@ -26,26 +26,25 @@ public class UserController {
         }
     }
 
-    @GetMapping("user")
+    @GetMapping("/users")
     private ResponseEntity<List<UserBuilder>> AllUserBuilder (){
         return ResponseEntity.ok(userService.getAllUserBuilder());
     }
 
     //Metodo get para un usuario
-    @GetMapping (path="user/{userId}")
+    @GetMapping (path="/users/{userId}")
     public UserBuilder getUser(@PathVariable("userId")Long id) {
         return userService.getOnlyUser(id);
     }
 
     //Metodo put para un usuario
-    @PutMapping(path="user/{userId}")
+    @PutMapping(path="/users/{userId}")
     public UserBuilder updateUser(@PathVariable("userId") Long id,
                                    @RequestParam(required = false) String name,
                                    @RequestParam(required = false) String lastName,
                                    @RequestParam(required = false) String email,
                                   @RequestParam(required = false) Long phone,
                                   @RequestParam(required = false) String address,
-
                                    @RequestBody ChangePassword changePassword) {
         return userService.updateUser(id, name, lastName, email, changePassword.getPassword(),
                 changePassword.getNewPassword(), phone, address);
@@ -67,7 +66,7 @@ public class UserController {
 //    }//updateUsuarios
 
     //Metodo delete para un usuario
-    @DeleteMapping (path="user/{userId}")
+    @DeleteMapping (path="users/{userId}")
     public UserBuilder deleteOnlyUser(@PathVariable("userId") Long id) {
         return userService.deleteUser(id);
     }

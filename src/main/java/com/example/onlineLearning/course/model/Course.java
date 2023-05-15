@@ -7,35 +7,36 @@ import java.util.*;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long course_id;
     private String name;
     private String description;
     private Date startDate;
     private Date endDate;
     private Long durationInWeeks;
-//    @ManyToMany(mappedBy =  "enrolledCourses")
-//    private List<UserMember> enrolledUsers;
+
+    @ManyToMany(mappedBy =  "enrolledCourses")
+    private List<UserMember> enrolledUsers;
 
 
     public Course() {
     }
 
-    public Course(Long id, String name, String description, Date startDate, Date endDate, Long durationInWeeks) {
-        this.id = id;
+    public Course(Long course_id, String name, String description, Date startDate, Date endDate, Long durationInWeeks, List<UserMember> enrolledUsers) {
+        this.course_id = course_id;
         this.name = name;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.durationInWeeks = durationInWeeks;
-
+        this.enrolledUsers = enrolledUsers;
     }
 
-    public Long getId() {
-        return id;
+    public Long getCourse_id() {
+        return course_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setCourse_id(Long course_id) {
+        this.course_id = course_id;
     }
 
     public String getName() {
@@ -78,5 +79,11 @@ public class Course {
         this.durationInWeeks = durationInWeeks;
     }
 
+    public List<UserMember> getEnrolledUsers() {
+        return enrolledUsers;
+    }
 
+    public void setEnrolledUsers(List<UserMember> enrolledUsers) {
+        this.enrolledUsers = enrolledUsers;
+    }
 }

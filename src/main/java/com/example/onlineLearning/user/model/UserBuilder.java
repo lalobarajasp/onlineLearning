@@ -14,7 +14,7 @@ public class UserBuilder implements com.example.onlineLearning.user.contract.Use
     private String password; //required
     private Long phone; //required
     private String address; //optional
-    private Long passwordCode; //optional
+    private Long passwordCode; //required
 
     @Override
     public UserBuilder id(Long id) {

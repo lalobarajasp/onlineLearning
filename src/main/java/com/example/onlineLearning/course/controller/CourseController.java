@@ -12,47 +12,45 @@ import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/course")
 public class CourseController {
     @Autowired
     private CourseService courseService;
 
     @PostMapping(path = "/create")
-    private ResponseEntity<Course> save(@RequestBody Course course){
+    private ResponseEntity<Course> createController(@RequestBody Course course){
         Course temporal = courseService.create(course);
         try{
-            return ResponseEntity.created(new URI("/"+temporal.getId())).body(temporal);
+            return ResponseEntity.created(new URI("/"+temporal.getCourse_id())).body(temporal);
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
     }
 
     @GetMapping(path = "/courses")
-    private ResponseEntity<List<Course>> AllCourses (){
-
+    private ResponseEntity<List<Course>> getAllCoursesController (){
         return ResponseEntity.ok(courseService.getAllCourses());
     }
 
     @GetMapping (path = "/courses/{courseId}")
-    private Course getCourse(@PathVariable("courseId")Long id) {
-        return courseService.getOnlyCourse(id);
+    private Course getOnlyCourseController (@PathVariable("courseId")Long course_id) {
+        return courseService.getOnlyCourse(course_id);
     }
 
     @PutMapping(path = "/courses/{courseId}")
-    public Course updateCourse(@PathVariable("courseId") Long id,
+    public Course updateCourseController (@PathVariable("courseId") Long course_id,
                                   @RequestParam(required = false) String name,
                                   @RequestParam(required = false) String description,
                                   @RequestParam(required = false) Date startDate,
                                   @RequestParam(required = false) Date endDate,
                                   @RequestParam(required = false) Long durationInWeeks) {
-        return courseService.updateCourse(id, name, description,startDate,endDate,durationInWeeks );
+        return courseService.updateCourse(course_id, name, description,startDate,endDate,durationInWeeks );
     }
 
     @DeleteMapping (path = "/courses/{courseId}")
-    public Course deleteCourse(@PathVariable("courseId") Long id) {
-
-        return courseService.deleteCourse(id);
+    public Course deleteCourseController (@PathVariable("courseId") Long course_id) {
+        return courseService.deleteCourse(course_id);
     }
 
 

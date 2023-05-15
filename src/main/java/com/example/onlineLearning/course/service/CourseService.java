@@ -14,7 +14,6 @@ public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
 
-
     //Create Course
     public Course create(Course course) {
         return courseRepository.save(course);
@@ -26,17 +25,17 @@ public class CourseService {
     }
 
     //Retrieve Only a Course
-    public Course getOnlyCourse(Long id) {
-        return courseRepository.findById(id).orElseThrow(
-                () -> new IllegalStateException("The course with id: " + id + " doesn't exist.")
+    public Course getOnlyCourse(Long course_id) {
+        return courseRepository.findById(course_id).orElseThrow(
+                () -> new IllegalStateException("The course with id: " + course_id + " doesn't exist.")
         );
     }
 
     //Update Course
-    public Course updateCourse(Long id, String name, String description, Date startDate, Date endDate, Long durationInWeeks) {
+    public Course updateCourse(Long course_id, String name, String description, Date startDate, Date endDate, Long durationInWeeks) {
         Course tmpCourse = null;
-        if (courseRepository.existsById(id)) {
-            tmpCourse = courseRepository.findById(id).get();
+        if (courseRepository.existsById(course_id)) {
+            tmpCourse = courseRepository.findById(course_id).get();
             if (name != null) tmpCourse.setName(name);
             if (description != null) tmpCourse.setDescription(description);
             if (startDate != null) tmpCourse.setStartDate(startDate);
@@ -44,17 +43,17 @@ public class CourseService {
             if (durationInWeeks != null) tmpCourse.setDurationInWeeks(durationInWeeks);
             courseRepository.save(tmpCourse);
         } else {
-            System.out.println("Update | The course with the id: " + id + " doesn't exist.");
+            System.out.println("Update | The course with the id: " + course_id + " doesn't exist.");
         }
         return tmpCourse;
     }
 
     //Delete Course
-    public Course deleteCourse(Long id) {
+    public Course deleteCourse(Long course_id) {
         Course tmpCourse = null;
-        if (courseRepository.existsById(id)) {
-            tmpCourse = courseRepository.findById(id).get();
-            courseRepository.deleteById(id);
+        if (courseRepository.existsById(course_id)) {
+            tmpCourse = courseRepository.findById(course_id).get();
+            courseRepository.deleteById(course_id);
         }
         return tmpCourse;
     }
