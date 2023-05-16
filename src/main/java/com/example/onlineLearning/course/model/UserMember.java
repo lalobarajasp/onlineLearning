@@ -10,16 +10,20 @@ public class UserMember {
     private Long user_id;
     private String name;
     private String email;
-    //@ManyToMany(cascade = CascadeType.ALL)
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
     @JoinTable(
             name = "enrollments",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_id"))
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "course_id")})
     private  List<Course> enrolledCourses;
 
     public UserMember() {
     }
+
     public UserMember(Long user_id, String name, String email, List<Course> enrolledCourses) {
         this.user_id = user_id;
         this.name = name;

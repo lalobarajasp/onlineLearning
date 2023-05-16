@@ -1,4 +1,5 @@
 package com.example.onlineLearning.course.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 import java.util.*;
@@ -8,23 +9,31 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long course_id;
-    private String name;
-    private String description;
+    private String title;
+    private String category;
+    private String keywords;
     private Date startDate;
     private Date endDate;
     private Long durationInWeeks;
 
-    @ManyToMany(mappedBy =  "enrolledCourses")
+   @ManyToMany(fetch = FetchType.LAZY,
+           cascade = {
+                   CascadeType.PERSIST,
+                   CascadeType.MERGE
+           },
+           mappedBy = "enrolledCourses")
+   @JsonIgnore
     private List<UserMember> enrolledUsers;
 
 
     public Course() {
     }
 
-    public Course(Long course_id, String name, String description, Date startDate, Date endDate, Long durationInWeeks, List<UserMember> enrolledUsers) {
+    public Course(Long course_id, String title, String category, String keywords, Date startDate, Date endDate, Long durationInWeeks, List<UserMember> enrolledUsers) {
         this.course_id = course_id;
-        this.name = name;
-        this.description = description;
+        this.title = title;
+        this.category = category;
+        this.keywords = keywords;
         this.startDate = startDate;
         this.endDate = endDate;
         this.durationInWeeks = durationInWeeks;
@@ -39,20 +48,28 @@ public class Course {
         this.course_id = course_id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getCategory() {
+        return category;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
     }
 
     public Date getStartDate() {
@@ -86,4 +103,5 @@ public class Course {
     public void setEnrolledUsers(List<UserMember> enrolledUsers) {
         this.enrolledUsers = enrolledUsers;
     }
+
 }

@@ -3,15 +3,12 @@ package com.example.onlineLearning.course.controller;
 import com.example.onlineLearning.course.model.Course;
 import com.example.onlineLearning.course.model.UserMember;
 import com.example.onlineLearning.course.service.UserMemberService;
-import com.example.onlineLearning.user.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -23,13 +20,13 @@ public class UserMemberController {
     @PostMapping("/{userId}/enroll/{courseId}")
     public String enrollCourseController (@PathVariable("userId") Long user_id, @PathVariable("courseId") Long course_id) {
         userMemberService.enrollCourse(user_id, course_id);
-        return "redirect:/users/{userId}";
+        return "You've been enrolled successfully!";
     }
 
     @PostMapping("/{userId}/unenroll/{courseId}")
     public String unEnrollCourseController (@PathVariable("userId") Long user_id, @PathVariable("courseId") Long course_id) {
         userMemberService.unEnrollCourse(user_id, course_id);
-        return "redirect:/users/{userId}";
+        return "You've been unenrolled successfully!";
     }
 
     //ADD, UPDATE AND DELETE USER MEMBER
@@ -48,6 +45,7 @@ public class UserMemberController {
         return ResponseEntity.ok(userMemberService.getAllUserMember());
     }
 
+
     @GetMapping ("/members/{userId}")
     public UserMember getOnlyUserMemberController (@PathVariable("userId")Long user_id) {
         return userMemberService.getOnlyUserMember(user_id);
@@ -65,6 +63,9 @@ public class UserMemberController {
     public UserMember deleteUserMemberController(@PathVariable("userId") Long user_id) {
         return userMemberService.deleteUserMember(user_id);
     }
+
+
+
 
 
 

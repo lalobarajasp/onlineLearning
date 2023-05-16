@@ -40,17 +40,23 @@ public class CourseController {
 
     @PutMapping(path = "/courses/{courseId}")
     public Course updateCourseController (@PathVariable("courseId") Long course_id,
-                                  @RequestParam(required = false) String name,
-                                  @RequestParam(required = false) String description,
+                                  @RequestParam(required = false) String title,
+                                  @RequestParam(required = false) String category,
+                                          @RequestParam(required = false) String keywords,
                                   @RequestParam(required = false) Date startDate,
                                   @RequestParam(required = false) Date endDate,
                                   @RequestParam(required = false) Long durationInWeeks) {
-        return courseService.updateCourse(course_id, name, description,startDate,endDate,durationInWeeks );
+        return courseService.updateCourse(course_id, title, category, keywords, startDate,endDate,durationInWeeks );
     }
 
     @DeleteMapping (path = "/courses/{courseId}")
     public Course deleteCourseController (@PathVariable("courseId") Long course_id) {
         return courseService.deleteCourse(course_id);
+    }
+
+    @GetMapping("/search")
+    public List<Course> searchCourses(@RequestParam("search") String searchTerm) {
+        return courseService.searchCourses(searchTerm);
     }
 
 

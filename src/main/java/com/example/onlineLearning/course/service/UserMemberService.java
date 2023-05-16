@@ -4,14 +4,9 @@ import com.example.onlineLearning.course.model.Course;
 import com.example.onlineLearning.course.model.UserMember;
 import com.example.onlineLearning.course.repository.CourseRepository;
 import com.example.onlineLearning.course.repository.UserMemberRepository;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -21,10 +16,7 @@ public class UserMemberService {
     @Autowired
     private CourseRepository courseRepository;
 
-    public List<UserMember> searchUsers(String name, String email) {
-        return userMemberRepository.findByNameContainingAndEmailContaining(name, email);
-    }
-
+    //Enroll course
     public UserMember enrollCourse(Long user_id, Long course_id) {
         UserMember user = userMemberRepository.findById(user_id).orElse(null);
         Course course = courseRepository.findById(course_id).orElse(null);
@@ -38,6 +30,7 @@ public class UserMemberService {
         return user;
     }
 
+    //Unenroll course
     public UserMember unEnrollCourse(Long user_id, Long course_id) {
         UserMember user = userMemberRepository.findById(user_id).orElse(null);
         Course course = courseRepository.findById(course_id).orElse(null);
@@ -52,8 +45,6 @@ public class UserMemberService {
         return user;
     }
 
-
-    //ADD, UPDATE AND DELETE USERMEMBER
     //Create User
     public UserMember create(UserMember userMember) {
         return userMemberRepository.save(userMember);
@@ -64,6 +55,7 @@ public class UserMemberService {
         return userMemberRepository.findAll();
     }
 
+
     //Retrieve Only a User
     public UserMember getOnlyUserMember(Long user_id) {
         return userMemberRepository.findById(user_id).orElseThrow(
@@ -71,7 +63,7 @@ public class UserMemberService {
         );
     }
 
-    //Update UserMember
+    //Update User
     public UserMember updateUserMember(Long user_id, String name, String email, List<Course> enrolledCourses) {
         UserMember tmpUserM = null;
         if (userMemberRepository.existsById(user_id)) {
@@ -86,7 +78,7 @@ public class UserMemberService {
         return tmpUserM;
     }
 
-    //Delete UserMember
+    //Delete User
     public UserMember deleteUserMember(Long user_id) {
         UserMember tmpUserM = null;
         if (userMemberRepository.existsById(user_id)) {
