@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/course")
+@RequestMapping(path = "/course")
 public class CourseController {
     @Autowired
     private CourseService courseService;
@@ -39,14 +39,8 @@ public class CourseController {
     }
 
     @PutMapping(path = "/courses/{courseId}")
-    public Course updateCourseController (@PathVariable("courseId") Long course_id,
-                                  @RequestParam(required = false) String title,
-                                  @RequestParam(required = false) String category,
-                                          @RequestParam(required = false) String keywords,
-                                  @RequestParam(required = false) Date startDate,
-                                  @RequestParam(required = false) Date endDate,
-                                  @RequestParam(required = false) Long durationInWeeks) {
-        return courseService.updateCourse(course_id, title, category, keywords, startDate,endDate,durationInWeeks );
+    public Course updateCourseController(@PathVariable("courseId") Long course_id, @RequestBody Course updatedCourse) {
+        return courseService.updateCourse(course_id, updatedCourse);
     }
 
     @DeleteMapping (path = "/courses/{courseId}")
@@ -54,7 +48,7 @@ public class CourseController {
         return courseService.deleteCourse(course_id);
     }
 
-    @GetMapping("/search")
+    @GetMapping(path = "/search")
     public List<Course> searchCourses(@RequestParam("search") String searchTerm) {
         return courseService.searchCourses(searchTerm);
     }

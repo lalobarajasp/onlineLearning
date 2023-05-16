@@ -5,6 +5,7 @@ import com.example.onlineLearning.course.model.UserMember;
 import com.example.onlineLearning.course.repository.CourseRepository;
 import com.example.onlineLearning.course.repository.UserMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,22 +35,23 @@ public class CourseService {
     }
 
     //Update Course
-    public Course updateCourse(Long course_id, String title, String category, String keywords, Date startDate, Date endDate, Long durationInWeeks) {
-        Course tmpCourse = null;
-        if (courseRepository.existsById(course_id)) {
-            tmpCourse = courseRepository.findById(course_id).get();
-            if (title != null) tmpCourse.setTitle(title);
-            if (category != null) tmpCourse.setCategory(category);
-            if (keywords != null) tmpCourse.setKeywords(keywords);
-            if (startDate != null) tmpCourse.setStartDate(startDate);
-            if (endDate != null) tmpCourse.setEndDate(endDate);
-            if (durationInWeeks != null) tmpCourse.setDurationInWeeks(durationInWeeks);
-            courseRepository.save(tmpCourse);
-        } else {
+    public Course updateCourse(Long course_id, Course updatedCourse) {
+        Course existingCourse = null;
+        if(courseRepository.existsById(course_id)) {
+            existingCourse = courseRepository.findById(course_id).get();
+            existingCourse.setTitle(updatedCourse.getTitle());
+            existingCourse.setCategory(updatedCourse.getCategory());
+            existingCourse.setKeywords(updatedCourse.getKeywords());
+            existingCourse.setStartDate(updatedCourse.getStartDate());
+            existingCourse.setEndDate(updatedCourse.getEndDate());
+            existingCourse.setDurationInWeeks(updatedCourse.getDurationInWeeks());
+            courseRepository.save(existingCourse);
+        }else {
             System.out.println("Update | The course with the id: " + course_id + " doesn't exist.");
         }
-        return tmpCourse;
+        return existingCourse;
     }
+
 
     //Delete Course
     public Course deleteCourse(Long course_id) {
