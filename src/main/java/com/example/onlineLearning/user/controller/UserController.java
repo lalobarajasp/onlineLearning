@@ -51,19 +51,15 @@ public class UserController {
     }//updateUsuarios
 
 
-//    @PutMapping(path="user/{userId}")
-//    public UserBuilder forgotPassword(@PathVariable("userId") Long id,
-//                                  @RequestParam(required = false) String name,
-//                                  @RequestParam(required = false) String lastName,
-//                                  @RequestParam(required = false) String email,
-//                                  @RequestParam(required = false) Long phone,
-//                                  @RequestParam(required = false) String address,
-//                                      @RequestParam(required = false) Long passwordCode,
-//                                  //---Se añadio linea RequestBody
-//                                  @RequestBody ChangePassword changePassword) {
-//        return userService.forgotPassword(id, name, lastName, email, changePassword.getPassword(),
-//                changePassword.getNewPassword(), phone, address, passwordCode);
-//    }//updateUsuarios
+    @PutMapping(path="user/{userId}")
+    public UserBuilder forgotPassword(@PathVariable("userId") Long id,
+                                  @RequestParam(required = false) String email,
+                                      @RequestParam(required = false) Long passwordCode,
+                                  //---Se añadio linea RequestBody
+                                  @RequestBody ChangePassword changePassword) {
+        return userService.forgotPassword(id, email, changePassword.getPassword(),
+                changePassword.getNewPassword(), passwordCode);
+    }//updateUsuarios
 
     //Metodo delete para un usuario
     @DeleteMapping (path="users/{userId}")

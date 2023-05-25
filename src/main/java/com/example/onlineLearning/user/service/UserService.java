@@ -54,29 +54,29 @@ public class UserService {
         return tmpUser;
     }
 
-    //Update Forgot Password
-//    public UserBuilder forgotPassword(Long id, String email, String password, String newPassword, Long passwordCode) {
-//        UserBuilder tmpUser = null;
-//        if (userRepository.existsById(id)) {
-//            tmpUser = userRepository.findById(id).get();
-//            if ((email != null) & (email.equals(tmpUser.getEmail()))) {
-//                if ((passwordCode != null) & (passwordCode.equals(tmpUser.getPasswordCode()))) {
-//                    //--------------------
-//                    if ((password != null) & (newPassword != null)) {
-//                        if (passwordCode.equals(tmpUser.getPasswordCode())) {
-//                            tmpUser.setPassword(newPassword);
-//                            userRepository.save(tmpUser);
-//                        }
-//                    }
-//                    //--------------------
-//                }
-//            }
-//            userRepository.save(tmpUser);
-//        } else {
-//            System.out.println("Update | The user with the id: " + id + " doesn't exist.");
-//        }
-//        return tmpUser;
-//    }
+   // Update Forgot Password
+    public UserBuilder forgotPassword(Long id, String email, String password, String newPassword, Long passwordCode) {
+        UserBuilder tmpUser = null;
+        if (userRepository.existsById(id)) {
+            tmpUser = userRepository.findById(id).get();
+            if ((email != null) & (email.equals(tmpUser.getEmail()))) {
+                if ((passwordCode != null) & (passwordCode.equals(tmpUser.getPasswordCode()))) {
+                    //--------------------
+                    if ((password != null) & (newPassword != null)) {
+                        if (passwordCode.equals(tmpUser.getPasswordCode())) {
+                            tmpUser.setPassword(newPassword);
+                            userRepository.save(tmpUser);
+                        }
+                    }
+                    //--------------------
+                }
+            }
+            userRepository.save(tmpUser);
+        } else {
+            System.out.println("Update | The user with the id: " + id + " doesn't exist.");
+        }
+        return tmpUser;
+    }
 
     //Delete User
     public UserBuilder deleteUser(Long id) {

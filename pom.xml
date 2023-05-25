@@ -17,10 +17,6 @@
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-jdbc</artifactId>-->
-<!--		</dependency>-->
 
 		<!--Connexion with the database-->
 		<dependency>
@@ -32,7 +28,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!---->
+
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -81,6 +77,35 @@ Shows any kind of problems in connectivity with dependent apps or systems using 
 			<version>2.2</version>
 			<scope>test</scope>
 		</dependency>
+		<!--Automatic generation of getters, setters, equals, hashCode and toString, and more!-->
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.26</version>
+			<scope>provided</scope>
+		</dependency>
+		<!--Spring Security-->
+		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-client</artifactId>
+			<version>6.1.0</version>
+		</dependency>
+
+		<!--Needed for @EnableWebSecurity-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+
 
 	</dependencies>
 
