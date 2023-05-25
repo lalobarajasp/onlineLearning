@@ -13,7 +13,7 @@ enter and select their own learning path through videos, documentation and exams
     "lastName": "LastName",
     "email": "email@example.com",
     "password": "password",
-    "passwordCode": 12345"
+    "passwordCode": 12345
 }'
 ```
 
