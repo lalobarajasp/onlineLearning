@@ -105,6 +105,11 @@ Shows any kind of problems in connectivity with dependent apps or systems using 
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
 
 
 	</dependencies>
