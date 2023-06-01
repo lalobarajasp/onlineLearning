@@ -11,6 +11,8 @@ import com.example.onlineLearning.user.registration.token.ConfirmationTokenServi
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import java.util.List;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -22,8 +24,9 @@ public class RegistrationService {
     private EmailValidator emailValidator;
     private ConfirmationTokenService confirmationTokenService;
     private AppUserRepository appUserRepository;
-
     private  final EmailSender emailSender;
+
+    private  final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 
 
@@ -110,9 +113,14 @@ public class RegistrationService {
         if (appUserRepository.existsById(id)) {
             register = appUserRepository.findById(id).get();
             if ((password != null) && (newPassword != null)) {
-                if (password.equals(register.getPassword())) {
+                boolean compare = bCryptPasswordEncoder.matches(password,register.getPassword());
+                if (compare) {
+                    String encodedPassword = bCryptPasswordEncoder.encode(register.getPassword());
+                    newPassword = encodedPassword;
                     register.setPassword(newPassword);
                     appUserRepository.save(register);
+                }else {
+                    throw new IllegalStateException("Please review your password. Try again.");
                 }
             }
             appUserRepository.save(register);
@@ -123,14 +131,14 @@ public class RegistrationService {
         return register;
     }
 
-
     public AppUser forgotPassword(Long id, Long passwordCode, String newPassword){
         AppUser register = null;
         if(appUserRepository.existsById(id)){
             register = appUserRepository.findById(id).get();
             if (passwordCode != null) {
                 if (passwordCode.equals(register.getPasswordCode())) {
-
+                    String encodedPassword = bCryptPasswordEncoder.encode(register.getPassword());
+                    newPassword = encodedPassword;
                     register.setPassword(newPassword);
                     appUserRepository.save(register);
                 }
