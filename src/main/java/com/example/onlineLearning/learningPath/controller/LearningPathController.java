@@ -2,8 +2,6 @@ package com.example.onlineLearning.learningPath.controller;
 
 import com.example.onlineLearning.learningPath.model.LearningPath;
 import com.example.onlineLearning.learningPath.service.LearningPathService;
-import com.example.onlineLearning.user.model.ChangePassword;
-import com.example.onlineLearning.user.model.UserBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

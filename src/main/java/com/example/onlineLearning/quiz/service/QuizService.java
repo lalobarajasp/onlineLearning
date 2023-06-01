@@ -2,8 +2,6 @@ package com.example.onlineLearning.quiz.service;
 
 import com.example.onlineLearning.quiz.model.Quiz;
 import com.example.onlineLearning.quiz.repository.QuizRepository;
-import com.example.onlineLearning.user.model.UserBuilder;
-import com.example.onlineLearning.user.respository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

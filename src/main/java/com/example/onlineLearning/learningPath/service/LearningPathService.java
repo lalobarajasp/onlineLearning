@@ -2,7 +2,6 @@ package com.example.onlineLearning.learningPath.service;
 
 import com.example.onlineLearning.learningPath.model.LearningPath;
 import com.example.onlineLearning.learningPath.repository.LearningPathRepository;
-import com.example.onlineLearning.user.model.UserBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
