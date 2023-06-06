@@ -1,5 +1,6 @@
 package com.example.onlineLearning.user.registration.service;
 
+import com.example.onlineLearning.course.model.Course;
 import com.example.onlineLearning.user.appUser.model.AppUser;
 import com.example.onlineLearning.user.appUser.model.AppUserRole;
 import com.example.onlineLearning.user.appUser.repository.AppUserRepository;
@@ -103,6 +104,19 @@ public class RegistrationService {
 
         }else {
             System.out.println("Update | The register with the id: " + id + " doesn't exist.");
+        }
+        return register;
+    }
+
+    //Delete Register
+    public AppUser deleteAppUser(Long id) {
+        AppUser register = null;
+        if (appUserRepository.existsById(id)) {
+            register = appUserRepository.findById(id).orElseThrow();
+            if (register.getDeletedAccount() == false) register.setDeletedAccount(true);
+            appUserRepository.save(register);
+        }else {
+            System.out.println("Delete | The register with the id: " + id + " doesn't exist.");
         }
         return register;
     }

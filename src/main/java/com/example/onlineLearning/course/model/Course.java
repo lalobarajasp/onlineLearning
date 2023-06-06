@@ -1,8 +1,15 @@
 package com.example.onlineLearning.course.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.List;
 import java.util.*;
+
+
 @Entity
 @Table(name = "course")
 public class Course {
@@ -16,28 +23,27 @@ public class Course {
     private Date endDate;
     private Long durationInWeeks;
 
-   @ManyToMany(fetch = FetchType.LAZY,
-           cascade = {
-                   CascadeType.PERSIST,
-                   CascadeType.MERGE
-           },
-           mappedBy = "enrolledCourses")
-   @JsonIgnore
-    private List<UserMember> enrolledUsers;
+//   @ManyToMany(fetch = FetchType.LAZY,
+//           cascade = {
+//                   CascadeType.PERSIST,
+//                   CascadeType.MERGE
+//           },
+//           mappedBy = "enrolledCourses")
+//   @JsonIgnore
+//    private List<UserMember> enrolledUsers;
 
 
     public Course() {
     }
 
-    public Course(Long course_id, String title, String category, String keywords, Date startDate, Date endDate, Long durationInWeeks, List<UserMember> enrolledUsers) {
-        this.course_id = course_id;
+    public Course(String title, String category, String keywords, Date startDate, Date endDate, Long durationInWeeks) {
         this.title = title;
         this.category = category;
         this.keywords = keywords;
         this.startDate = startDate;
         this.endDate = endDate;
         this.durationInWeeks = durationInWeeks;
-        this.enrolledUsers = enrolledUsers;
+//        this.enrolledUsers = enrolledUsers;
     }
 
     public Long getCourse_id() {
@@ -96,12 +102,12 @@ public class Course {
         this.durationInWeeks = durationInWeeks;
     }
 
-    public List<UserMember> getEnrolledUsers() {
-        return enrolledUsers;
-    }
-
-    public void setEnrolledUsers(List<UserMember> enrolledUsers) {
-        this.enrolledUsers = enrolledUsers;
-    }
+    //    public List<UserMember> getEnrolledUsers() {
+//        return enrolledUsers;
+//    }
+//
+//    public void setEnrolledUsers(List<UserMember> enrolledUsers) {
+//        this.enrolledUsers = enrolledUsers;
+//    }
 
 }

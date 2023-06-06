@@ -1,15 +1,11 @@
 package com.example.onlineLearning.course.service;
 
 import com.example.onlineLearning.course.model.Course;
-import com.example.onlineLearning.course.model.UserMember;
 import com.example.onlineLearning.course.repository.CourseRepository;
-import com.example.onlineLearning.course.repository.UserMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Service

@@ -87,11 +87,11 @@ Shows any kind of problems in connectivity with dependent apps or systems using 
 		</dependency>
 		<!--Spring Security-->
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-client -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-oauth2-client</artifactId>
-			<version>6.1.0</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.security</groupId>-->
+<!--			<artifactId>spring-security-oauth2-client</artifactId>-->
+<!--			<version>6.1.0</version>-->
+<!--		</dependency>-->
 
 		<!--Needed for @EnableWebSecurity-->
 		<dependency>
@@ -109,6 +109,17 @@ Shows any kind of problems in connectivity with dependent apps or systems using 
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
+
+
+<!--		Mockito Test-->
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>5.3.1</version>
+			<scope>test</scope>
+		</dependency>
+
 
 
 

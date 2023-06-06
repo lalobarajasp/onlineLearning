@@ -39,6 +39,9 @@ public class AppUser implements UserDetails {
     private Boolean locked = false; //Check whether the Account is locked
     private Boolean enabled = false; //It enables the User once they confirm their email.
 
+    private Boolean deletedAccount = false;
+
+
     public AppUser(String name, String lastName, String email, String password, Long passwordCode, AppUserRole appUserRole) {
         this.name = name;
         this.lastName = lastName;
@@ -93,5 +96,13 @@ public class AppUser implements UserDetails {
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    public Boolean getDeletedAccount() {
+        return deletedAccount;
+    }
+
+    public void setDeletedAccount(Boolean deletedAccount) {
+        this.deletedAccount = deletedAccount;
     }
 }

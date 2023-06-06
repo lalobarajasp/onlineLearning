@@ -1,5 +1,6 @@
 package com.example.onlineLearning.user.registration.controller;
 
+import com.example.onlineLearning.course.model.Course;
 import com.example.onlineLearning.user.appUser.model.AppUser;
 import com.example.onlineLearning.user.appUser.model.ChangePassword;
 import com.example.onlineLearning.user.registration.model.RegistrationRequest;
@@ -50,6 +51,13 @@ public class RegistrationController {
                                            @RequestParam(required = false) Long passwordCode){
         return registrationService.updateAppUser(id, name,lastName,email,passwordCode);
     }
+
+    //Delete register
+    @GetMapping (path = "/user/delete/{id}")
+    public AppUser deleteAppUserController (@PathVariable("id") Long id) {
+        return registrationService.deleteAppUser(id);
+    }
+
     @PutMapping(path = "/user/changepassword/{id}")
     public AppUser updatePasswordController(@PathVariable("id") Long id,
                                             @RequestBody ChangePassword changePassword
